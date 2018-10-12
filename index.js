@@ -5,8 +5,11 @@ const server = http.createServer((req, res) => {
   const parsedUrl = url.parse(req.url, true);
   const path = parsedUrl.pathname;
   const trimmedPath = path.replace(/^\/+|\/+$/g, "");
+
+  const method = req.method.toUpperCase();
+
   res.end("Hello World\n");
-  console.log("Request received on path: " + trimmedPath);
+  console.log(`Path: '${trimmedPath}' Method: ${method}`);
 });
 
 server.listen(3000, () => {
